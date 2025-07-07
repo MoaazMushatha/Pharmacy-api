@@ -1,6 +1,6 @@
 const Joi = require("joi");
 
-const createPharmacySch  = Joi.object({
+const createPharmacySch = Joi.object({
   name: Joi.string().trim().min(2).max(50).required(),
   address: Joi.string().trim().min(5).max(50).required(),
   phone: Joi.string()
@@ -19,13 +19,13 @@ const updatePharmacySch = Joi.object({
 })
   .min(1)
   .messages({
-    "object.min": "Please provide at least one field to update.",
+    "object.min": "يرجى إرسال حقل واحد على الأقل للتحديث.",
   });
 
 module.exports = {
   validCreatePhar: (data) =>
-    createPharmacySch .validate(data, { abortEarly: false }),
+    createPharmacySch.validate(data, { abortEarly: false }),
 
-    validUpdatePhar: (data) =>
+  validUpdatePhar: (data) =>
     updatePharmacySch.validate(data, { abortEarly: false }),
 };

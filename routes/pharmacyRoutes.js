@@ -10,37 +10,14 @@ const {
 
 const auth = require("../middlewares/authMiddleware");
 
-const { validCreatePhar, validUpdatePhar } = require("../validators/pharmacy");
-
-function valCreatePharm(req, res, next) {
-  const { error } = validCreatePhar(req.body);
-  if (error) {
-    return res
-      .status(400)
-      .json({ errors: error.details.map(({ mess }) => mess) });
-  }
-  next();
-}
-
-function valUpdatePharm(req, res, next) {
-  const { error } = validUpdatePhar(req.body);
-
-  if (error) {
-    return res
-      .status(400)
-      .json({ errors: error.details.map(({ mess }) => mess) });
-  }
-  next();
-}
-
-router.post("/", auth, valCreatePharm, createPharmacy);
+router.post("/", auth, createPharmacy);
 // router.post("/", auth, createPharmacy);
 
 router.get("/", auth, getPharmacies);
 
-router.patch("/:id", auth, valUpdatePharm, updatePharmacy);
+router.patch("/:id", auth, updatePharmacy);
 
-router.put("/:id", auth, valUpdatePharm, updatePharmacy);
+router.put("/:id", auth, updatePharmacy);
 
 // router.put("/:id", auth, updatePharmacy);
 

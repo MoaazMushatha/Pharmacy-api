@@ -4,6 +4,7 @@ const User = require("../models/User");
 module.exports = async (req, res, next) => {
   //يقرأ الهيدر Authorization اللي المفروض يحتوي على التوكن
   const authHeader = req.headers.authorization;
+  console.log(authHeader)
   let token;
 
   if (authHeader && authHeader.startsWith("Bearer ")) {
