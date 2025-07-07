@@ -296,6 +296,7 @@ exports.updateAlternatives = async (req, res, next) => {
 
     return returnJson(res, 200, true, "تم تحديث البدائل", med);
     // res.json(med);
+    // test
   } catch (err) {
     return next(createError(500, err.message));
     // res.status(500).json({ message: err.message });
